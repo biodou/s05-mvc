@@ -14,18 +14,19 @@ $router = new AltoRouter();
 
 // étape importante à c/c dans chaque projet utilisant AltoRouter
 // déterminer quelle partie de l'url ne doit pas être prise en charge par le routeur (cas où votre projet est dans un sous-dossier)
-$router->setBasePath(dirname($_SERVER['SCRIPT_NAME']));
-var_dump($_SERVER);
+$router->setBasePath($_SERVER['BASE_URI']);
+//var_dump($_SERVER['BASE_URI']);
 
 // on écrit quelques routes en faisant correspondre chaque url à une action
 // pour les actions, ce sont pour l'instant de simples strings, on choisit juste son séparateur préféré et on s'y tient (::, @ et # sont 3 bons candidats)
 $router->map('GET', '/', 'MainController::home');
 $router->map('GET', '/apropos', 'MainController::about');
-var_dump($router);
+$router->map('GET', '/apropos/auteur', 'MainController::aboutMe');
+//var_dump($router);
 
 // on demande au routeur si l'url par laquelle on est arrivé correspond à une route
 $match = $router->match();
-var_dump($match);
+//var_dump($match);
 // petit test très simple pour savoir si ça a marché
 if ($match) {
     // echo un message, c'est bien...

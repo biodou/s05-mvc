@@ -1,4 +1,14 @@
+# Active la réécriture d'URL Apache
+RewriteEngine On
 
-RewriteEngine on
+# dynamically setup base URI
+# => chemin (URL) de la page courante depuis localhost/
+RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+RewriteRule ^(.*) - [E=BASE_URI:%1]
+
+# redirect every request to index.php
+# and give the relative URL in "_url" GET param
+
+# http://altorouter.com/usage/rewrite-requests.html
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . index.php [L] 
+RewriteRule . index.php [L]
