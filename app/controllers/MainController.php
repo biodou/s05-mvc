@@ -41,7 +41,7 @@ class MainController {
         // avant de require les vues, on déclare la baseUrl, comme ça, on pourra y accéder de partout
         $baseUrl = $_SERVER['BASE_URI'];
         // après découpage, les fichiers .tpl.php ne contiennent plus que le contenu spécifique de la page => pratique et léger :-)
-        var_dump($viewName,$viewVars);
+        //var_dump($viewName,$viewVars);
         require __DIR__."/../views/header.part.php";
         require __DIR__."/../views/$viewName.tpl.php";
         require __DIR__."/../views/footer.part.php";
